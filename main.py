@@ -1,4 +1,5 @@
 from typing import List
+import uvicorn
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
@@ -45,3 +46,6 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         print(f"Disconnected")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
