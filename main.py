@@ -28,12 +28,7 @@ class ConnectionManager:
 manager = ConnectionManager()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.websocket("/ws/")
+@app.websocket("/")
 async def websocket_endpoint(websocket: WebSocket):
     print(websocket.client.port)
     await manager.connect(websocket)
